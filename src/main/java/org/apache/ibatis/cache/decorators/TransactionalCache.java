@@ -159,5 +159,4 @@ public class TransactionalCache implements Cache
 			cache.removeObject(key);
 		}
 	}
-
 }
