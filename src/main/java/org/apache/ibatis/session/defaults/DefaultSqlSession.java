@@ -498,7 +498,6 @@ public class DefaultSqlSession implements SqlSession
 			}
 			return super.get(key);
 		}
-
 	}
 
 }
