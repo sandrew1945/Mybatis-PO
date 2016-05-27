@@ -153,7 +153,7 @@ public class DefaultSqlCreatorImpl implements SqlCreator
 	private String whereCreator(POMapping mapping, Object po) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException
 	{
 		StringBuilder sql = new StringBuilder();
-		sql.append(" Where 1 = 1");
+		sql.append(" WHERE 1 = 1");
 		// 循环遍历PO的属性，生成AND条件
 		for (int i = 0; i < mapping.getColSize(); i++)
 		{

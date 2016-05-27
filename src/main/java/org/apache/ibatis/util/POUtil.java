@@ -122,7 +122,7 @@ public class POUtil
 			{
 				sB.append('_');
 			}
-			sB.append(Character.toLowerCase(c));
+			sB.append(Character.toUpperCase(c));
 		}
 		return sB.toString();
 	}
@@ -152,7 +152,7 @@ public class POUtil
 
 	/**
 	 * 
-	 * Function    : 根据表列名获取PO字段属�?�名
+	 * Function    : 根据表列名获取PO字段属性名
 	 * LastUpdate  : 2010-9-1
 	 * @param fieldName
 	 * @return
@@ -161,12 +161,12 @@ public class POUtil
 	{
 		// 将字段名变为小写
 		fieldName = fieldName.toLowerCase();
-		// �??"_"分割,然后首字母大�??
+		// 使用"_"分割,然后首字母大写
 		String[] parts = fieldName.split("_");
 		StringBuilder attribute = new StringBuilder();
 		for (int i = 0; i < parts.length; i++)
 		{
-			// 属�?�名首字母小�??
+			// 属性名首字母小写
 			String temp = null;
 			if (i != 0)
 			{

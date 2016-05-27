@@ -191,11 +191,15 @@ public class DefaultSqlSession implements SqlSession
 			Iterator<MappedStatement> it = mappedStatements.iterator();
 			while(it.hasNext())
 			{
-				Cache tmpCache = it.next().getCache();
-				if(null != tmpCache)
+				Object obj = it.next();
+				if(obj instanceof MappedStatement)
 				{
-					cache = tmpCache;
-					break;
+					Cache tmpCache = ((MappedStatement)obj).getCache();
+					if(null != tmpCache)
+					{
+						cache = tmpCache;
+						break;
+					}
 				}
 			}
 			
@@ -312,11 +316,15 @@ public class DefaultSqlSession implements SqlSession
 			Iterator<MappedStatement> it = mappedStatements.iterator();
 			while(it.hasNext())
 			{
-				Cache tmpCache = it.next().getCache();
-				if(null != tmpCache)
+				Object obj = it.next();
+				if(obj instanceof MappedStatement)
 				{
-					cache = tmpCache;
-					break;
+					Cache tmpCache = ((MappedStatement)obj).getCache();
+					if(null != tmpCache)
+					{
+						cache = tmpCache;
+						break;
+					}
 				}
 			}
 			dirty = true;

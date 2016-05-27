@@ -11,8 +11,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.sandrew.mybatis.mapper.CommonMapper;
-import com.sandrew.mybatis.mapper.TmUserPOMapper;
 import com.sandrew.mybatis.model.TmUserPO;
 
 /**
@@ -38,20 +36,20 @@ public class UpdateTest
 //			TmUserPO user = (TmUserPO) session.selectOne("com.sandrew.mybatis.mapper.TmUserPOMapper.selectByPrimaryKey", 5);
 //			System.out.println(user.getUserName());
 			
-//			TmUserPO cond = new TmUserPO();
-//			cond.setUserId(new Integer(5));
-//			TmUserPO val = new TmUserPO();
-//			val.setMobile("135xxxxxxxx");
-//			int count = session.update(cond, val);
-//			CommonMapper mapper = session.getMapper(CommonMapper.class);
-//			int count = mapper.update(cond, val);
-//			System.out.println("update count ======" + count);
-			
-			TmUserPOMapper mapper = session.getMapper(TmUserPOMapper.class);
 			TmUserPO cond = new TmUserPO();
-			cond.setUserId(new Integer(5));
-			cond.setMobile("444444444");
-			mapper.updateByPrimaryKey(cond);
+			cond.setUserId(new Integer(55));
+			TmUserPO val = new TmUserPO();
+			val.setMobile("135xxxxxxxx");
+			int count = session.update(cond, val);
+			//CommonMapper mapper = session.getMapper(CommonMapper.class);
+			//int count = mapper.update(cond, val);
+			System.out.println("update count ======" + count);
+			
+//			TmUserPOMapper mapper = session.getMapper(TmUserPOMapper.class);
+//			TmUserPO cond = new TmUserPO();
+//			cond.setUserId(new Integer(55));
+//			cond.setMobile("444444444");
+//			mapper.updateByPrimaryKey(cond);
 			
 			
 //			TmUserPO user = new TmUserPO();
