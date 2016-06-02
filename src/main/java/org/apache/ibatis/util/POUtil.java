@@ -254,10 +254,8 @@ public class POUtil
 			{
 				// 如果PO此属性不为null，则添加AND添件
 				// 根据数据库列名获取PO属性名
-				String attrName = POUtil.getAttributeNameByFieldName(mapping.getColName(i));
-				// 获取此属性字段的get方法
-				//Method getMethod = po.getClass().getMethod(POUtil.getMethodOfGetByFieldName(attrName), null);
-				Object value = POUtil.invokeGetMethodByField(po[j], attrName);
+				// String attrName = POUtil.getAttributeNameByFieldName(mapping.getColName(i));
+				Object value = POUtil.invokeGetMethodByField(po[j], mapping.getPropertyName(i));
 				if (null != value)
 				{
 					params.add(value);

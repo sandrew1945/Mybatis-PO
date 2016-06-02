@@ -47,7 +47,7 @@ public class SelectTest
 			
 			CommonMapper commonMapper = session.getMapper(CommonMapper.class);
 			TmUserPO cond = new TmUserPO();
-			cond.setUserCode("sun.lao");
+			cond.setUserCode("admin");
 			List<TmUserPO> list = commonMapper.select(cond, new POCallBack(TmUserPO.class));
 			System.out.println(list.size());
 			TmUserPO result = list.get(0);

@@ -182,7 +182,6 @@ public class DefaultSqlSession implements SqlSession
 
 	public <E> List<E> select(Object po, DAOCallback<E> callback)
 	{
-
 		try
 		{
 			// 获取缓存
