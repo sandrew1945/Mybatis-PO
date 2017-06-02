@@ -48,6 +48,7 @@ public class SimpleExecutor extends BaseExecutor
 		try
 		{
 			Configuration configuration = ms.getConfiguration();
+			// 这里是RoutingStatementHandler实例,RoutingStatementHandler中根据StatementType代理使用SimpleStatementHandler、PreparedStatementHandler或CallableStatementHandler
 			StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, RowBounds.DEFAULT, null, null);
 			stmt = prepareStatement(handler, ms.getStatementLog());
 			return handler.update(stmt);

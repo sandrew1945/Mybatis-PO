@@ -115,7 +115,7 @@ public class DefaultSqlCreatorImpl implements SqlCreator
 			// 生成update语句前缀
 			sql.append(updatePrefixCreator(mapping.getTableName()));
 			// 生成update语句后缀
-			sql.append(updateSuffixCreator(value));
+			sql.append(updateSuffixCreator(mapping, value));
 			// 生成where条件
 			sql.append(whereCreator(mapping, cond));
 		}
@@ -158,12 +158,8 @@ public class DefaultSqlCreatorImpl implements SqlCreator
 		for (int i = 0; i < mapping.getColSize(); i++)
 		{
 			// 如果PO此属性不为null，则添加AND添件
-			// 根据数据库列名获取PO属性名
-			// String attrName = POUtil.getAttributeNameByFieldName(mapping.getColName(i));
 			// 获取此属性字段的get方法
-			//Method getMethod = po.getClass().getMethod(POUtil.getMethodOfGetByFieldName(attrName), null);
 			Object value = POUtil.invokeGetMethodByField(po, mapping.getPropertyName(i));
-			//Object value = getMethod.invoke(po, new Object[0]);
 			if (null != value)
 			{
 				sql.append(" AND ").append(mapping.getColName(i)).append(" = ?");
@@ -237,10 +233,8 @@ public class DefaultSqlCreatorImpl implements SqlCreator
 		for(int i = 0;i<fields.length;i++)
 		{
 			// 如果PO此属性不为null，则添加
-			// 根据数据库列名获取PO属性名
-			String attrName = POUtil.getAttributeNameByFieldName(mapping.getColName(i));
 			// 获取此属性字段的get方法
-			Object value = POUtil.invokeGetMethodByField(po, attrName);
+			Object value = POUtil.invokeGetMethodByField(po, mapping.getPropertyName(i));
 			if (null != value)
 			{
 				sql.append(mapping.getColName(i)).append(",");
@@ -268,7 +262,7 @@ public class DefaultSqlCreatorImpl implements SqlCreator
 	 * @param mapping
 	 * @return
 	 */
-	private String updateSuffixCreator(Object po)
+	private String updateSuffixCreator(POMapping mapping, Object po)
 	{
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SET ");
@@ -279,7 +273,7 @@ public class DefaultSqlCreatorImpl implements SqlCreator
 			Object value = POUtil.invokeGetMethodByField(po, fields[i].getName());
 			if (null != value)
 			{
-				sql.append(POUtil.getColNameByFieldName(fields[i].getName())).append("=?,");
+				sql.append(mapping.getColName(i)).append("=?,");
 			}
 		}
 		// 删除最后一个","
